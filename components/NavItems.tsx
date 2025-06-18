@@ -9,7 +9,7 @@ const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
     imageUrl: "/assets/images/david.webp",
   };
 
-  console.log("1:25:34");
+  console.log("1:35:41");
   return (
     <section className="nav-items">
       <Link to="/" className="link-logo">
