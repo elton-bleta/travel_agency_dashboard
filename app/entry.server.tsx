@@ -1,5 +1,6 @@
 import { PassThrough } from "node:stream";
 import * as Sentry from "@sentry/react-router";
+import { getMetaTagTransformer } from "@sentry/react-router";
 import type {
   AppLoadContext,
   EntryContext,
@@ -51,7 +52,7 @@ function handleRequest(
           );
 
           // this enables distributed tracing between client and server
-          pipe(Sentry.getMetaTagTransformer(body));
+          pipe(getMetaTagTransformer(body));
         },
         onShellError(error: unknown) {
           reject(error);

@@ -12,12 +12,12 @@ const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
     navigate("/sign-in");
   };
 
-  console.log("2:16:55");
+  console.log("3:37:36");
   return (
     <section className="nav-items">
       <Link to="/" className="link-logo">
         <img src="/assets/icons/logo.svg" alt="logo" className="size-[30px]" />
-        AlbaniaTour
+        TonyTour
       </Link>
       <div className="container">
         <nav>

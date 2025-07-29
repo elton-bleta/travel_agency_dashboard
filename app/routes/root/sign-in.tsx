@@ -26,7 +26,7 @@ const SignIn = () => {
                 className="size-[30px]"
               />
             </Link>
-            <h1 className="p-28-bold text-dark-100">AlbanianTour</h1>
+            <h1 className="p-28-bold text-dark-100">TonyTour</h1>
           </header>
           <article>
             <h2 className="p-28-semibold text-dark-100 text-center">
