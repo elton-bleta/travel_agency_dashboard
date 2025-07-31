@@ -5,7 +5,6 @@ import { comboBoxItems, selectItems } from "~/constants";
 import { cn, formatKey } from "lib/utils";
 import { useState } from "react";
 import {
-  animate,
   LayerDirective,
   LayersDirective,
   MapsComponent,
@@ -13,6 +12,7 @@ import {
 import { world_map } from "~/constants/world_map";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
 import { account } from "~/appwrite/client";
+import { useNavigate } from "react-router";
 
 export const loader = async () => {
   const response = await fetch("https://restcountries.com/v3.1/region/europe");
@@ -29,6 +29,7 @@ export const loader = async () => {
 
 const createTrip = ({ loaderData }: Route.ComponentProps) => {
   const countries = loaderData as Country[];
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState<TripFormData>({
     country: countries[0]?.name || "",
@@ -70,9 +71,31 @@ const createTrip = ({ loaderData }: Route.ComponentProps) => {
       return;
     }
 
+    const { country, duration, travelStyle, interest, budget, groupType } =
+      formData;
+
     try {
-      console.log("user", user);
-      console.log("formData", formData);
+      const response = await fetch("/api/create-trip", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          country,
+          duration,
+          travelStyle,
+          interest,
+          budget,
+          groupType,
+          userId: user.$id,
+        }),
+      });
+
+      const result: CreateTripResponse = await response.json();
+
+      if (result?.id) {
+        navigate(`/trips/${result.id}`);
+      } else {
+        console.error("Fail to generate the trip");
+      }
     } catch (e) {
       console.error("Error generating trip", e);
     } finally {
@@ -127,7 +150,7 @@ const createTrip = ({ loaderData }: Route.ComponentProps) => {
                 </div>
               )}
               valueTemplate={(country: any) => (
-                <div className="flex items-center">
+                <div className="inline-flex items-center gap-2 !important">
                   <img
                     src={country.flag}
                     alt={country.text}
