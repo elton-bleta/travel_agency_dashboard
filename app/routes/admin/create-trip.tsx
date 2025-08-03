@@ -79,12 +79,12 @@ const createTrip = ({ loaderData }: Route.ComponentProps) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          country,
-          duration,
-          travelStyle,
-          interest,
-          budget,
-          groupType,
+          country: formData.country,
+          numberOfDays: formData.duration,
+          travelStyle: formData.travelStyle,
+          interests: formData.interest,
+          budget: formData.budget,
+          groupType: formData.groupType,
           userId: user.$id,
         }),
       });
@@ -187,6 +187,7 @@ const createTrip = ({ loaderData }: Route.ComponentProps) => {
             <input
               id="duration"
               name="duration"
+              type="number"
               placeholder="Enter a number of days (5, 12 ...)"
               className="form-input placeholder:text-gray-100"
               onChange={(e) => handleChange("duration", Number(e.target.value))}
