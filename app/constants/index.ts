@@ -212,7 +212,7 @@ export const allTrips = [
 ];
 
 export const user = { name: "Elton" };
-export const dashboradStats = {
+export const dashboardStats = {
   totalUsers: 12450,
   usersJoined: { currentMonth: 218, lastMonth: 176 },
   totalTrips: 3210,
