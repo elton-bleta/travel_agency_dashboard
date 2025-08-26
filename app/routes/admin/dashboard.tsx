@@ -13,7 +13,6 @@ import {
   ChartComponent,
   ColumnSeries,
   DataLabel,
-  Inject,
   SeriesCollectionDirective,
   SeriesDirective,
   SplineAreaSeries,
@@ -24,6 +23,7 @@ import {
   GridComponent,
   ColumnsDirective,
   ColumnDirective,
+  Inject,
 } from "@syncfusion/ej2-react-grids";
 
 export const clientLoader = async () => {

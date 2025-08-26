@@ -71,9 +71,6 @@ const createTrip = ({ loaderData }: Route.ComponentProps) => {
       return;
     }
 
-    const { country, duration, travelStyle, interest, budget, groupType } =
-      formData;
-
     try {
       const response = await fetch("/api/create-trip", {
         method: "POST",
@@ -150,13 +147,15 @@ const createTrip = ({ loaderData }: Route.ComponentProps) => {
                 </div>
               )}
               valueTemplate={(country: any) => (
-                <div className="inline-flex items-center gap-2 !important">
-                  <img
-                    src={country.flag}
-                    alt={country.text}
-                    className="w-6 h-3 pl-1.5 rounded-sm object-cover"
-                  />
-                  <span>{country.text}</span>
+                <div>
+                  <span className="flex items-center">
+                    <img
+                      src={country.flag}
+                      alt={country.text}
+                      className="w-6 h-3 pl-1.5 rounded-sm object-cover"
+                    />
+                    <span className="pl-1.5">{country.text}</span>
+                  </span>
                 </div>
               )}
               change={(e: { value: string | undefined }) => {

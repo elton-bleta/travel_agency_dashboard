@@ -12,7 +12,6 @@ const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
     navigate("/sign-in");
   };
 
-  console.log("5:03:00");
   return (
     <section className="nav-items">
       <Link to="/" className="link-logo">
